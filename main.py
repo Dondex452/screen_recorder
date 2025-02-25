@@ -66,6 +66,13 @@ class ScreenRecorderGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("PC Screen Recorder")
+        
+        # Add error handling for icon loading
+        try:
+            self.root.iconbitmap('icon.ico')
+        except:
+            print("Warning: icon.ico not found")
+            
         self.recorder = Recorder()
         self.recording = False
         self.annotation_position = None
@@ -223,7 +230,7 @@ class ScreenRecorderGUI:
         # Hide all optional widgets first
         self.region_button.grid_remove()
         
-        if mode == "Custom Region":
+        if (mode == "Custom Region"):
             self.region_button.grid()
             
     def start_region_selection(self):
